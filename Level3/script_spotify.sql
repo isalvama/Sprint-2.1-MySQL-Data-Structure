@@ -5,7 +5,7 @@ SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS user;
 CREATE TABLE user(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     email VARCHAR(50) NOT NULL UNIQUE,
     username VARCHAR(100) NOT NULL UNIQUE,
     password VARBINARY(255) NOT NULL,
@@ -19,8 +19,8 @@ CREATE TABLE user(
 
 DROP TABLE IF EXISTS payment_method;
 CREATE TABLE payment_method(
-    id INT AUTO_INCREMENT,
-    user_id INT NOT NULL UNIQUE,
+    id INT UNSIGNED AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL UNIQUE,
     registration_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     CONSTRAINT fk_payment_method_user FOREIGN KEY (user_id) REFERENCES user(id)
@@ -28,7 +28,7 @@ CREATE TABLE payment_method(
 
 DROP TABLE IF EXISTS credit_card;
 CREATE TABLE credit_card(
-    id INT NOT NULL,
+    id INT UNSIGNED NOT NULL,
     credit_card_number BIGINT NOT NULL UNIQUE,
     security_code VARBINARY(200) NOT NULL,
     expiration_date TIMESTAMP NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE credit_card(
 
 DROP TABLE IF EXISTS paypal_account;
 CREATE TABLE paypal_account(
-    id INT NOT NULL,
+    id INT UNSIGNED NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARBINARY(255) NOT NULL,
     PRIMARY KEY (id),
@@ -48,11 +48,11 @@ CREATE TABLE paypal_account(
 
 DROP TABLE IF EXISTS subscription;
 CREATE TABLE subscription(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     start_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     renewal_date TIMESTAMP AS (DATE_ADD(start_date, INTERVAL 1 YEAR)) STORED,
     payment_method_id INT NOT NULL,
-    user_id INT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_subscription_payment_method FOREIGN KEY (payment_method_id) REFERENCES payment_method(id),
     CONSTRAINT fk_subscription_user FOREIGN KEY (user_id) REFERENCES user(id)
@@ -60,7 +60,7 @@ CREATE TABLE subscription(
 
 DROP TABLE IF EXISTS artist;
 CREATE TABLE artist(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL UNIQUE,
     image BLOB NOT NULL,
     year DATE NOT NULL,
@@ -79,10 +79,10 @@ CREATE TABLE album(
 
 DROP TABLE IF EXISTS song;
 CREATE TABLE song(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    artist_id INT NOT NULL,
-    album_id INT NOT NULL,
+    artist_id INT UNSIGNED NOT NULL,
+    album_id INT UNSIGNED NOT NULL,
     duration_seconds BIGINT NOT NULL,
     number_times_played INT NOT NULL,
     PRIMARY KEY (id),
@@ -96,7 +96,7 @@ CREATE TABLE playlist(
     title VARCHAR(100) NOT NULL DEFAULT 'New Playlist',
     creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     number_of_songs INT NOT NULL DEFAULT 0,
-    user_id INT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
     removal_date TIMESTAMP,
     is_active boolean AS (removal_date IS NULL) VIRTUAL,
     PRIMARY KEY (id),
@@ -105,11 +105,11 @@ CREATE TABLE playlist(
 
 DROP TABLE IF EXISTS playlist_song;
 CREATE TABLE playlist_song(
-    id INT AUTO_INCREMENT,
-    playlist_id INT NOT NULL,
-    song_id INT NOT NULL,
+    id INT UNSIGNED AUTO_INCREMENT,
+    playlist_id INT UNSIGNED NOT NULL,
+    song_id INT UNSIGNED NOT NULL,
     inclusion_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    user_included_id INT NOT NULL,
+    user_included_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_playlist_song_playlist FOREIGN KEY (playlist_id) REFERENCES playlist(id),
     CONSTRAINT fk_playlist_song_song FOREIGN KEY (song_id) REFERENCES song(id),
@@ -118,9 +118,9 @@ CREATE TABLE playlist_song(
 
 DROP TABLE IF EXISTS user_artist;
 CREATE TABLE user_artist(
-    id INT AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    artist_id INT NOT NULL,
+    id INT UNSIGNED AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    artist_id INT UNSIGNED NOT NULL,
     following_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     CONSTRAINT fk_user_artist_user FOREIGN KEY (user_id) REFERENCES user(id),
@@ -129,9 +129,9 @@ CREATE TABLE user_artist(
 
 DROP TABLE IF EXISTS artist_artist;
 CREATE TABLE artist_artist(
-    id INT AUTO_INCREMENT,
-    follower_id INT NOT NULL,
-    followed_id INT NOT NULL,
+    id INT UNSIGNED AUTO_INCREMENT,
+    follower_id INT UNSIGNED NOT NULL,
+    followed_id INT UNSIGNED NOT NULL,
     following_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     CONSTRAINT fk_artist_artist_follower FOREIGN KEY (follower_id) REFERENCES artist(id),
@@ -141,8 +141,8 @@ CREATE TABLE artist_artist(
 DROP TABLE IF EXISTS user_album;
 CREATE TABLE user_album(
     id INT AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    album_id INT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    album_id INT UNSIGNED NOT NULL,
     following_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     CONSTRAINT fk_user_album_user FOREIGN KEY (user_id) REFERENCES user(id),
@@ -152,8 +152,8 @@ CREATE TABLE user_album(
 DROP TABLE IF EXISTS user_song;
 CREATE TABLE user_song(
     id INT AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    song_id INT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    song_id INT UNSIGNED NOT NULL,
     following_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     CONSTRAINT fk_user_song_user FOREIGN KEY (user_id) REFERENCES user(id),

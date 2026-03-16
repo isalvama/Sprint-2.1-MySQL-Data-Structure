@@ -59,7 +59,7 @@ CREATE TABLE employee(
 
 DROP TABLE IF EXISTS store;
 CREATE TABLE store(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     postal_code VARCHAR(20) NOT NULL,
     town_id INT NOT NULL,
@@ -73,14 +73,14 @@ CREATE TABLE store(
 
 DROP TABLE IF EXISTS category;
 CREATE TABLE category(
-    id INT AUTO_INCREMENT,
+    id UNSIGNED INT AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS product;
 CREATE TABLE product(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     price FLOAT NOT NULL,
     image BLOB NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE product(
 
 DROP TABLE IF EXISTS command;
 CREATE TABLE command(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     register_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     type ENUM('take away', 'store') NOT NULL,
     store_id INT NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE command(
 
 DROP TABLE IF EXISTS command_group;
 CREATE TABLE command_group(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     command_id INT NOT NULL,
     product_id INT NOT NULL,
     quantity SMALLINT NOT NULL DEFAULT 1,
@@ -121,7 +121,7 @@ CREATE TABLE command_group(
 
 DROP TABLE IF EXISTS shipping;
 CREATE TABLE shipping(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     arrival_date TIMESTAMP NOT NULL,
     command_id INT NOT NULL,
     delivery_price FLOAT NOT NULL DEFAULT 0,

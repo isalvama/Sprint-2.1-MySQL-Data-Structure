@@ -22,7 +22,7 @@ CREATE TABLE supplier(
 
 DROP TABLE IF EXISTS brand;
 CREATE TABLE brand(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL UNIQUE,
     supplier_id INT NOT NULL,
     PRIMARY KEY (id),
@@ -32,7 +32,7 @@ CREATE TABLE brand(
 
 DROP TABLE IF EXISTS glasses;
 CREATE TABLE glasses(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     brand_id INT NOT NULL,
     prescription FLOAT NOT NULL,
     frame_type ENUM('floating', 'plastic', 'metallic') NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE glasses(
 
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     nif VARCHAR(50) NOT NULL UNIQUE,
     name VARCHAR(100) NOT NULL,
     surname VARCHAR(100) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE employee(
 
 DROP TABLE IF EXISTS costumer;
 CREATE TABLE costumer(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     street VARCHAR(100) NOT NULL,
     street_number SMALLINT NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE costumer(
 
 DROP TABLE IF EXISTS sale;
 CREATE TABLE sale(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     register_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     glasses_id INT NOT NULL UNIQUE,
     seller_employee_id INT NOT NULL,

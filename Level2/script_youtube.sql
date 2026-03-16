@@ -6,7 +6,7 @@ SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS chanel;
 CREATE TABLE chanel(
-    id          INT AUTO_INCREMENT,
+    id          INT UNSIGNED AUTO_INCREMENT,
     name       VARCHAR(50)  NOT NULL,
     description VARCHAR(5000) NOT NULL,
     register_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -15,7 +15,7 @@ CREATE TABLE chanel(
 
 DROP TABLE IF EXISTS user;
 CREATE TABLE user(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(20) NOT NULL,
     password VARCHAR(20) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE user(
 
 DROP TABLE IF EXISTS label;
 CREATE TABLE label(
-    id          INT AUTO_INCREMENT,
+    id          INT UNSIGNED AUTO_INCREMENT,
     name       VARCHAR(200)  NOT NULL,
     description VARCHAR(1000) NOT NULL,
     PRIMARY KEY (id)
@@ -40,7 +40,7 @@ CREATE TABLE label(
 
 DROP TABLE IF EXISTS video;
 CREATE TABLE video(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     title VARCHAR(200) NOT NULL,
     description VARCHAR(1000) NOT NULL,
     weight DOUBLE PRECISION(15,10) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE video(
 
 DROP TABLE IF EXISTS like_dislike;
 CREATE TABLE like_dislike(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     user_id INT NOT NULL,
     type ENUM('like', 'dislike') NOT NULL,
     video_id INT NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE like_dislike(
 
 DROP TABLE IF EXISTS subscription;
 CREATE TABLE subscription(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     user_id INT NOT NULL,
     chanel_id INT NOT NULL,
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -83,11 +83,11 @@ CREATE TABLE subscription(
 
 DROP TABLE IF EXISTS playlist;
 CREATE TABLE playlist(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL DEFAULT 'New Playlist',
     creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    user_id INT NOT NULL,
-    video_id INT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    video_id INT UNSIGNED NOT NULL,
     visibility_status ENUM('public', 'private') NOT NULL DEFAULT 'public',
     PRIMARY KEY (id),
     CONSTRAINT fk_playlist_user FOREIGN KEY (user_id) REFERENCES user(id)
@@ -98,8 +98,8 @@ CREATE TABLE playlist_record(
     id INT AUTO_INCREMENT,
     incorporation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     video_id INT NOT NULL,
-    playlist_id INT NOT NULL,
-    user_id INT NOT NULL,
+    playlist_id INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_playlist_record_video FOREIGN KEY (video_id) REFERENCES video(id),
     CONSTRAINT fk_playlist_record_user FOREIGN KEY (user_id) REFERENCES user(id)
@@ -107,10 +107,10 @@ CREATE TABLE playlist_record(
 
 DROP TABLE IF EXISTS comment;
 CREATE TABLE comment(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    video_id INT NOT NULL,
-    user_id INT NOT NULL,
+    video_id INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
     comment_body VARCHAR(5000) NOT NULL DEFAULT '',
     PRIMARY KEY (id),
     CONSTRAINT fk_comment_video FOREIGN KEY (video_id) REFERENCES video(id),
@@ -119,10 +119,10 @@ CREATE TABLE comment(
 
 DROP TABLE IF EXISTS like_dislike_comment;
 CREATE TABLE like_dislike_comment(
-    id INT AUTO_INCREMENT,
+    id INT UNSIGNED AUTO_INCREMENT,
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    comment_id INT NOT NULL,
-    user_id INT NOT NULL,
+    comment_id INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
     type ENUM('like', 'dislike') NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_like_dislike_comment_comment FOREIGN KEY (comment_id) REFERENCES comment(id),
