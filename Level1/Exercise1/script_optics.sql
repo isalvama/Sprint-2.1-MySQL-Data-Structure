@@ -12,7 +12,7 @@ CREATE TABLE supplier(
     street VARCHAR(100) NOT NULL,
     street_number SMALLINT NOT NULL,
     floor SMALLINT,
-    door VARCHAR(20),
+    door VARCHAR(10),
     city VARCHAR (100) NOT NULL,
     postal_code VARCHAR(20) NOT NULL,
     country VARCHAR(50) NOT NULL,
