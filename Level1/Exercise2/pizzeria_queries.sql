@@ -1,4 +1,4 @@
-    SELECT SUM(pizzeria.command_group.quantity)
+    SELECT SUM(cg.quantity)
     FROM pizzeria.command_group cg
     JOIN pizzeria.product p
     ON cg.product_id = p.id

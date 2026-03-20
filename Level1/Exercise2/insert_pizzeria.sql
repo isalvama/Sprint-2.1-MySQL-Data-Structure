@@ -44,11 +44,11 @@ VALUES('Ana', 'Ferreira', 1100, 9, 'Rua Augusta', 101, 4, 1, 656789123);
 INSERT INTO pizzeria.client(name, surname, postal_code, town_id, street, street_number, floor, door, phone_number)
 VALUES('Miguel', 'Santos', 8600, 10, 'Rua 25 Abril', 14, 1, 2, 667891234);
 
-INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Ana', 'Martinez', '12345677I', 'cook');
+INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Ana', 'Martinez', '12345677I', 'cooker');
 INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Paula', 'Perez', '23445677A', 'deliverer');
-INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Alex', 'Galofre', '67845677C', 'cook');
+INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Alex', 'Galofre', '67845677C', 'cooker');
 INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Pedro', 'Salcedo', '44545677T', 'deliverer');
-INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Ryan', 'Pitts', '33245677G', 'cook');
+INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Ryan', 'Pitts', '33242377G', 'cooker');
 INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Maria', 'Capdevila', '55645677H', 'deliverer');
 INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Carla', 'Paz', '556453677Y', 'waiter');
 INSERT INTO pizzeria.employee(name, surname, nif, position) VALUES('Anna', 'Ruiz', '55634577Q', 'waiter');
@@ -94,10 +94,10 @@ INSERT INTO pizzeria.product(name, price, image, category_id) VALUES ('Brownie',
 INSERT INTO pizzeria.product(name, price, image, category_id) VALUES ('Tiramisu', 7.5, 0x89504E628D0A1A0A, 5);
 
 
-INSERT INTO pizzeria.command(type, store_id, client_id, cooker_id, seller_employee_id)
+INSERT INTO pizzeria.command(type, store_id, client_id, cooker_id, waiter_id)
 VALUES ('store', 1, 1, 1, 7);
 
-INSERT INTO pizzeria.command(register_date, type, store_id, client_id, cooker_id, seller_employee_id)
+INSERT INTO pizzeria.command(register_date, type, store_id, client_id, cooker_id, waiter_id)
 VALUES ('2026-02-16 12:45:37', 'store', 1, 2, 3, 8);
 
 INSERT INTO pizzeria.command(register_date, type, store_id, client_id, cooker_id, deliverer_id)
@@ -109,7 +109,7 @@ VALUES ('take away', 3, 4, 1, 4);
 INSERT INTO pizzeria.command(type, store_id, client_id, cooker_id, deliverer_id)
 VALUES ('take away', 2, 5, 3, 6);
 
-INSERT INTO pizzeria.command(type, store_id, client_id, cooker_id, seller_employee_id)
+INSERT INTO pizzeria.command(type, store_id, client_id, cooker_id, waiter_id)
 VALUES ('store', 2, 6, 3, 9);
 
 
@@ -129,12 +129,12 @@ INSERT INTO pizzeria.command_group(command_id, product_id, quantity) VALUES (6, 
 INSERT INTO pizzeria.command_group(command_id, product_id, quantity) VALUES (6, 6, 2);
 INSERT INTO pizzeria.command_group(command_id, product_id, quantity) VALUES (6, 10, 3);
 
-INSERT INTO pizzeria.shipping(command_id, cooker_id, postal_code, town_id, street, street_number, floor, door)
-VALUES (3, 5, '09009', 2, 'Riu', 12, 4, '3');
+INSERT INTO pizzeria.shipping(command_id, postal_code, town_id, street, street_number, floor, door)
+VALUES (3, '09009', 2, 'Riu', 12, 4, '3');
 
-INSERT INTO pizzeria.shipping(command_id, cooker_id, postal_code, town_id, street, street_number, floor, door)
-VALUES (4, 1, '01005', 3, 'Gran Via', 63, 5, '2');
+INSERT INTO pizzeria.shipping(command_id, postal_code, town_id, street, street_number, floor, door)
+VALUES (4, '01005', 3, 'Gran Via', 63, 5, '2');
 
-INSERT INTO pizzeria.shipping(command_id, cooker_id, postal_code, town_id, street, street_number, floor, door)
-VALUES (5, 3, '01455', 4, 'Gran Via', 66, 4, '2');
+INSERT INTO pizzeria.shipping(command_id, postal_code, town_id, street, street_number, floor, door)
+VALUES (5, '01455', 4, 'Gran Via', 66, 4, '2');
 
