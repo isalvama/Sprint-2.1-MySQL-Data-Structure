@@ -2,15 +2,14 @@
 SELECT * FROM opticsculdampolla.sale
          WHERE costumer_id = 1
            AND
-             register_date < NOW();
+             date < NOW();
 
 SELECT glasses_id FROM opticsculdampolla.sale
          WHERE seller_employee_id = 2
            AND
-             register_date > DATE_SUB(NOW(), INTERVAL 1 YEAR)
-                 AND register_date < NOW();
+             date > DATE_SUB(NOW(), INTERVAL 1 YEAR)
+                 AND date < NOW();
 
--- els diferents proveïdors que han subministrat ulleres venudes amb èxit per l'òptica.
 
 SELECT glasses_id FROM opticsculdampolla.sale
                   JOIN opticsculdampolla.glasses g on g.id = sale.glasses_id
