@@ -6,8 +6,8 @@ services:
     container_name: isalvama-mysql
     restart: unless-stopped
     environment:
-      MYSQL_USER: isalvama
-      MYSQL_PASSWORD: password123
+      MYSQL_USER: ${DB_NAME}
+      MYSQL_PASSWORD: ${PASSWORD_ROOT}
     ports:
       - "3307:3306"
     volumes:
