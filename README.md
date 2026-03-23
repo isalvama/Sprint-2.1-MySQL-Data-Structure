@@ -11,22 +11,30 @@ The project covers four distinct business scenarios, progressing from basic rela
 - SQL (DDL, DML, and DQL)
 Project Structure
 The project is organized by business domains, each containing its schema definition (script_*.sql), data insertion (insert_*.sql), and sample queries (*_queries.sql).
+
+
+## Project Structure
 ```
 TascaS2.01/
-├── Optics/
-│   ├── optics_script.sql
-│   ├── insert_optics.sql
-│   └── optics_queries.sql
-├── Pizzeria/
-│   ├── script_pizzeria.sql
-│   ├── insert_pizzeria.sql
-│   └── pizzeria_queries.sql
-├── YouTube/
-│   ├── script_youtube.sql
-│   └── insert_youtube.sql
-└── Spotify/
-    ├── script_spotify.sql
-    └── insert_spotify.sql
+└── Level 1
+      └── Exercise 1
+              └── Optics/
+                    ├── optics_script.sql
+                    ├── insert_optics.sql
+                    └── optics_queries.sql
+      └── Exercise 2
+              └── Pizzeria/
+                    ├── script_pizzeria.sql
+                    ├── insert_pizzeria.sql
+                    └── pizzeria_queries.sql
+└── Level 2
+      └── YouTube/
+          ├── script_youtube.sql
+          └── insert_youtube.sql
+└── Level 3
+      └── Spotify/
+          ├── script_spotify.sql
+          └── insert_spotify.sql
 ```
 
 ## Installation and Usage
