@@ -1,4 +1,4 @@
-# Tasca S2 01: MySQL Databases
+# Sprint 2.1: MySQL Databases Structure
 
 ## Description
 
