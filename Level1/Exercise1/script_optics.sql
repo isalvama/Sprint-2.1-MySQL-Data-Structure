@@ -34,7 +34,8 @@ DROP TABLE IF EXISTS glasses;
 CREATE TABLE glasses(
     id INT UNSIGNED AUTO_INCREMENT,
     brand_id INT UNSIGNED NOT NULL,
-    prescription DECIMAL(4,2) UNSIGNED NOT NULL,
+    prescription_left DECIMAL(4,2) UNSIGNED NOT NULL,
+    prescription_right DECIMAL(4,2) UNSIGNED NOT NULL,
     frame_type ENUM('floating', 'plastic', 'metallic') NOT NULL,
     frame_color VARCHAR(20) NOT NULL,
     glass_color VARCHAR(20) NOT NULL,

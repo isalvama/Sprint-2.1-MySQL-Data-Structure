@@ -8,14 +8,14 @@ VALUES ('Afflelou', 2);
 INSERT INTO opticsculdampolla.brand(name, supplier_id)
 VALUES ('Dior', 2);
 
-INSERT INTO opticsculdampolla.glasses(brand_id, prescription, frame_type, frame_color, glass_color, price)
-    VALUES (1, 0.55, 'plastic', 'blue', 'transparent', 150);
-INSERT INTO opticsculdampolla.glasses(brand_id, prescription, frame_type, frame_color, glass_color, price)
-    VALUES (2, 1.2, 'metallic', 'grey', 'brown', 70);
-INSERT INTO opticsculdampolla.glasses(brand_id, prescription, frame_type, frame_color, glass_color, price)
-    VALUES (3, 1.5, 'floating', 'brown', 'black', 190);
-INSERT INTO opticsculdampolla.glasses(brand_id, prescription, frame_type, frame_color, glass_color, price)
-    VALUES (3, 1.0, 'floating', 'white', 'trnasparent', 170);
+INSERT INTO opticsculdampolla.glasses(brand_id, prescription_left, prescription_right, frame_type, frame_color, glass_color, price)
+    VALUES (1, 0.55, 0.90, 'plastic', 'blue', 'transparent', 150);
+INSERT INTO opticsculdampolla.glasses(brand_id, prescription_left, prescription_right, frame_type, frame_color, glass_color, price)
+    VALUES (2, 1.2, 1, 'metallic', 'grey', 'brown', 70);
+INSERT INTO opticsculdampolla.glasses(brand_id, prescription_left, prescription_right, frame_type, frame_color, glass_color, price)
+    VALUES (3, 1.5, 1.2,'floating', 'brown', 'black', 190);
+INSERT INTO opticsculdampolla.glasses(brand_id, prescription_left, prescription_right, frame_type, frame_color, glass_color, price)
+    VALUES (3, 1.0, 0.5,'floating', 'white', 'trnasparent', 170);
 
 INSERT INTO opticsculdampolla.employee(nif, name, surname) VALUES ('12345678Y', 'Joe', 'Dwight');
 INSERT INTO opticsculdampolla.employee(nif, name, surname) VALUES ('12345672Y', 'Paul', 'McDougall');
