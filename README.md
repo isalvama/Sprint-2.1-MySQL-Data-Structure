@@ -37,15 +37,49 @@ TascaS2.01/
           └── insert_spotify.sql
 ```
 
-## Installation and Usage
+## Installation and Usage: 🚀 Running with Docker
 
-1. Ensure you have MySQL Server installed and running.
+This project uses **Docker Compose** to manage a MySQL database in an isolated and persistent environment.
 
-2. Open your preferred MySQL client (MySQL Workbench, DBeaver, or Terminal).
-3. Execute the scripts in the following order for each project:
-  - First, run the `script_*.sql` to create the schema.
-  - Second, run the `insert_*.sql` to populate the database.
-  - Finally, run the `*_queries.sql` to test the data retrieval.
+### 📋 Prerequisites
+
+*   [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+*   An SQL client (Recommended: [DataGrip](https://www.jetbrains.com/datagrip/) or MySQL Workbench).
+
+### 🛠️ Setup and Installation
+
+1. **Launch the container:**
+    Open a terminal in the project folder and run:
+
+    ```bash
+    docker-compose up -d
+    ```
+    *This command will pull the MySQL image, create a persistent volume for your data, and expose the service on port 3307.*
+
+3.  **Verify status:**
+    You can check if the container is running correctly with:
+    ```bash
+    docker ps
+    ```
+
+### 🔌 Database Connection
+
+To connect from **DataGrip** or any other SQL client, use the following parameters:
+
+*   **Host:** `localhost`
+*   **Port:** `3307` (mapped internally to 3306 to avoid local conflicts)
+*   **User:** `root`
+*   **Password:** The one defined in `PASSWORD_ROOT` in the `.env` file.
+*   **Database:** The one defined as `DB_NAME` in the `.env` file.
+
+### 💾 Data Persistence
+The container uses a **Docker Volume** named `isalvama-mysql-volume`. This ensures that even if you stop or delete the container, your tables and data will remain saved on your local machine.
+
+### 🛑 Managing the Service
+
+*   **Stop containers:** `docker-compose stop`
+*   **Remove containers (keeping data):** `docker-compose down`
+*   **Remove containers AND delete all data:** `docker-compose down -v`
 
 ## Database Scenarios
 
