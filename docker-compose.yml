@@ -1,17 +1,22 @@
-version: '3.8'
-
 services:
-  db:
+  MySQLdb:
     image: mysql:8.0
     container_name: isalvama-mysql
     restart: unless-stopped
     environment:
-      MYSQL_USER: ${DB_NAME}
+      # ESTA ES LA QUE FALTA Y ES OBLIGATORIA:
+      MYSQL_ROOT_PASSWORD: ${PASSWORD_ROOT}
+
+      # Opcional: Esto crea una base de datos automáticamente al arrancar
+      MYSQL_DATABASE: ${DB_NAME}
+
+      # Opcional: Esto crea un usuario normal (distinto a root)
+      MYSQL_USER: usuario_proyecto
       MYSQL_PASSWORD: ${PASSWORD_ROOT}
     ports:
       - "3307:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - isalvama-mysql-volume:/var/lib/mysql
 
 volumes:
-  db_data:
+  isalvama-mysql-volume:
